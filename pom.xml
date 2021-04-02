@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>dev.unexist.showcase</groupId>
     <artifactId>quarkus-showcase-parent</artifactId>
@@ -24,10 +25,12 @@
     </developers>
 
     <properties>
+        <!-- Maven -->
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -36,6 +39,9 @@
         <quarkus.platform.version>1.13.0.Final</quarkus.platform.version>
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+
+        <!-- Logging -->
+        <slf4j.version>1.7.30</slf4j.version>
 
         <!-- Util -->
         <apache-commons-lang.version>3.11</apache-commons-lang.version>
@@ -53,6 +59,7 @@
 
         <!-- Testing -->
         <jqwik.version>1.5.0</jqwik.version>
+        <hamcrest.version>2.2</hamcrest.version>
 
         <!-- Workaround to get the timestamp -->
         <timestamp>${maven.build.timestamp}</timestamp>
@@ -94,6 +101,18 @@
             <artifactId>quarkus-jacoco</artifactId>
         </dependency>
 
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
         <!-- Util -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -114,8 +133,20 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>net.jqwik</groupId>
+            <artifactId>jqwik</artifactId>
+            <version>${jqwik.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -140,7 +171,8 @@
                 <version>${surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager
+                        </java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
                 </configuration>
@@ -204,6 +236,16 @@
             </resource>
         </resources>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <profiles>
         <profile>
@@ -274,13 +316,17 @@
                         </executions>
                         <configuration>
                             <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                            <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                            <generateGitPropertiesFilename>
+                                ${project.build.outputDirectory}/git.properties
                             </generateGitPropertiesFilename>
                             <includeOnlyProperties>
                                 <includeOnlyProperty>^git.branch$</includeOnlyProperty>
-                                <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
-                                <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
-                                <includeOnlyProperty>^git.commit.user.(email|name)$</includeOnlyProperty>
+                                <includeOnlyProperty>^git.build.(time|version)$
+                                </includeOnlyProperty>
+                                <includeOnlyProperty>^git.commit.id.(abbrev|full)$
+                                </includeOnlyProperty>
+                                <includeOnlyProperty>^git.commit.user.(email|name)$
+                                </includeOnlyProperty>
                             </includeOnlyProperties>
                             <commitIdGenerationMode>full</commitIdGenerationMode>
                         </configuration>
