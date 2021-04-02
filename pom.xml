@@ -39,9 +39,12 @@
 
         <!-- Util -->
         <apache-commons-lang.version>3.11</apache-commons-lang.version>
-        <hg-revision-plugin.version>0.10</hg-revision-plugin.version>
         <jackson-modules-java8.version>2.12.1</jackson-modules-java8.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+
+        <!-- VCS -->
+        <hg-revision-plugin.version>0.10</hg-revision-plugin.version>
+        <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
 
         <!-- Audit -->
         <checkstyle-plugin.version>3.1.1</checkstyle-plugin.version>
@@ -235,7 +238,6 @@
             </activation>
             <build>
                 <plugins>
-                    <!-- Info -->
                     <plugin>
                         <groupId>com.github.volodya-lombrozo</groupId>
                         <artifactId>hg-revision-plugin</artifactId>
@@ -248,6 +250,40 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>git</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>pl.project13.maven</groupId>
+                        <artifactId>git-commit-id-plugin</artifactId>
+                        <version>${git-commit-id-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>get-the-git-infos</id>
+                                <goals>
+                                    <goal>revision</goal>
+                                </goals>
+                                <phase>initialize</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                            <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                            </generateGitPropertiesFilename>
+                            <includeOnlyProperties>
+                                <includeOnlyProperty>^git.branch$</includeOnlyProperty>
+                                <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+                                <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+                                <includeOnlyProperty>^git.commit.user.(email|name)$</includeOnlyProperty>
+                            </includeOnlyProperties>
+                            <commitIdGenerationMode>full</commitIdGenerationMode>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
