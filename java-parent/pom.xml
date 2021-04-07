@@ -216,6 +216,11 @@
                         <artifactId>spotbugs</artifactId>
                         <version>${spotbugs-plugin.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-annotations</artifactId>
+                        <version>${spotbugs-plugin.version}</version>
+                    </dependency>
                 </dependencies>
                 <configuration>
                     <effort>Max</effort>
