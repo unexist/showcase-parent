@@ -1,6 +1,6 @@
 Maven showcase parent
 ----
-This is project holds a bill-of-material (BOM) for my quarkus showcase projects, to ease
+This project holds a bill-of-material (BOM) for my quarkus showcase projects, to ease
 version handling and tool configs.
 
 Instructions
