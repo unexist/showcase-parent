@@ -34,8 +34,6 @@
     </module>
 
     <module name="RegexpHeader">
-        <property name="headerFile"
-                  value="checkstyle/file.header"/>
         <property name="fileExtensions"
                   value="java"/>
     </module>
