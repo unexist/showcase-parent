@@ -47,7 +47,6 @@
         <spotbugs-plugin.version>4.1.4</spotbugs-plugin.version>
 
         <!-- Testing -->
-        <jqwik.version>1.5.0</jqwik.version>
         <hamcrest.version>2.2</hamcrest.version>
 
         <!-- Workaround to get the timestamp -->
@@ -119,12 +118,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.jqwik</groupId>
-            <artifactId>jqwik</artifactId>
-            <version>${jqwik.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
