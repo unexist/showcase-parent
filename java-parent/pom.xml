@@ -38,7 +38,7 @@
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
 
         <!-- VCS -->
-        <hg-revision-plugin.version>0.10</hg-revision-plugin.version>
+        <hg-revision-plugin.version>0.9</hg-revision-plugin.version>
         <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
 
         <!-- Audit -->
