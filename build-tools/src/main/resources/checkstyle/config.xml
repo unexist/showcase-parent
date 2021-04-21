@@ -208,20 +208,16 @@
                     value="java.lang.Boolean,java.lang.Integer,java.lang.Long,java.lang.Short,java.lang.Double,java.lang.Float"/>
         </module>
         <module name="IllegalThrows"/>
-        <module name="ImportOrder">
-            <property
-                    name="groups"
-                    value="de,com,org,javax,java"/>
-            <property
-                    name="separated"
-                    value="true"/>
-            <property
-                    name="option"
-                    value="top"/>
-            <property
-                    name="severity"
-                    value="warning"/>
+
+        <module name="CustomImportOrder">
+            <property name="customImportOrderRules"
+                      value="THIRD_PARTY_PACKAGE###SPECIAL_IMPORTS###STANDARD_JAVA_PACKAGE###STATIC"/>
+            <property name="specialImportsRegExp" value="^javax\."/>
+            <property name="standardPackageRegExp" value="^java\."/>
+            <property name="sortImportsInGroupAlphabetically" value="true"/>
+            <property name="separateLineBetweenGroups" value="false"/>
         </module>
+
         <module name="Indentation">
             <property
                     name="basicOffset"
