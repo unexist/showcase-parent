@@ -16,18 +16,22 @@
     </parent>
 
     <properties>
+        <!-- Project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <!-- Maven -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
         <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 
         <!-- Quarkus -->
-        <quarkus-plugin.version>1.13.2.Final</quarkus-plugin.version>
-        <quarkus.platform.version>1.13.2.Final</quarkus.platform.version>
+        <quarkus.version>1.13.2.Final</quarkus.version>
+        <quarkus-testing.version>2.0.0.Alpha1</quarkus-testing.version>
 
         <!-- Logging -->
         <slf4j.version>1.7.30</slf4j.version>
@@ -49,46 +53,11 @@
         <!-- Testing -->
         <hamcrest.version>2.2</hamcrest.version>
 
-        <!-- Workaround to get the timestamp -->
+        <!-- Workaround to get a proper timestamp -->
         <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- Quarkus -->
-            <dependency>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-universe-bom</artifactId>
-                <version>${quarkus.platform.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-jsonb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-openapi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-validator</artifactId>
-        </dependency>
-        <!--<dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jacoco</artifactId>
-        </dependency>-->
-
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -142,13 +111,15 @@
         <plugins>
             <!-- Maven -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
+                    <release>${maven.compiler.target}</release>
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire-plugin.version}</version>
                 <configuration>
@@ -256,14 +227,115 @@
         <profile>
             <id>quarkus</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!testing</name>
+                </property>
             </activation>
+
+            <dependencyManagement>
+                <dependencies>
+                    <!-- Quarkus -->
+                    <dependency>
+                        <groupId>io.quarkus</groupId>
+                        <artifactId>quarkus-universe-bom</artifactId>
+                        <version>${quarkus.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <dependencies>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-resteasy</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-resteasy-jsonb</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-smallrye-openapi</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-hibernate-validator</artifactId>
+                </dependency>
+                <!--<dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-jacoco</artifactId>
+                </dependency>-->
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>io.quarkus</groupId>
                         <artifactId>quarkus-maven-plugin</artifactId>
-                        <version>${quarkus-plugin.version}</version>
+                        <version>${quarkus.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate-code</goal>
+                                    <goal>generate-code-tests</goal>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>quarkus-testing</id>
+            <activation>
+                <property>
+                    <name>testing</name>
+                </property>
+            </activation>
+
+            <dependencyManagement>
+                <dependencies>
+                    <!-- Quarkus -->
+                    <dependency>
+                        <groupId>io.quarkus</groupId>
+                        <artifactId>quarkus-bom</artifactId>
+                        <version>${quarkus.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <dependencies>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-resteasy</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-resteasy-jsonb</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-smallrye-openapi</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-hibernate-validator</artifactId>
+                </dependency>
+                <!--<dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-jacoco</artifactId>
+                </dependency>-->
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.quarkus</groupId>
+                        <artifactId>quarkus-maven-plugin</artifactId>
+                        <version>${quarkus.version}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -281,7 +353,9 @@
         <profile>
             <id>hg</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!git</name>
+                </property>
             </activation>
             <build>
                 <plugins>
@@ -304,6 +378,11 @@
 
         <profile>
             <id>git</id>
+            <activation>
+                <property>
+                    <name>git</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -350,8 +429,9 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${surefire-plugin.version}</version>
+                        <version>${maven-failsafe-plugin.version}</version>
                         <executions>
                             <execution>
                                 <goals>
