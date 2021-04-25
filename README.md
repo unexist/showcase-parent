@@ -27,16 +27,12 @@ Also included is a list of different profiles:
 
 The quarkus version can be toggled with the **testing** property:
 
-```xml
-    <properties>
-        <testing>true</testing>
-    </properties>
+```shell
+mvn quarkus:dev -Dtesting=true
 ```
 
 Git can be enabled with the **git** property:
 
-```xml
-    <properties>
-        <git>true</git>
-    </properties>
+```shell
+mvn quarkus:dev -Dgit=true
 ```

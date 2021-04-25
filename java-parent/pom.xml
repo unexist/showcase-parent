@@ -52,6 +52,8 @@
 
         <!-- Testing -->
         <hamcrest.version>2.2</hamcrest.version>
+        <rest-assured.version>4.3.3</rest-assured.version>
+        <assertj-core.version>3.19.0</assertj-core.version>
 
         <!-- Workaround to get a proper timestamp -->
         <timestamp>${maven.build.timestamp}</timestamp>
@@ -85,13 +87,9 @@
 
         <!-- Testing -->
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -103,6 +101,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -262,6 +261,11 @@
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-hibernate-validator</artifactId>
                 </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-junit5</artifactId>
+                    <scope>test</scope>
+                </dependency>
                 <!--<dependency>
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-jacoco</artifactId>
@@ -301,7 +305,7 @@
                     <dependency>
                         <groupId>io.quarkus</groupId>
                         <artifactId>quarkus-bom</artifactId>
-                        <version>${quarkus.version}</version>
+                        <version>${quarkus-testing.version}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -325,6 +329,11 @@
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-hibernate-validator</artifactId>
                 </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-junit5</artifactId>
+                    <scope>test</scope>
+                </dependency>
                 <!--<dependency>
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-jacoco</artifactId>
@@ -335,7 +344,7 @@
                     <plugin>
                         <groupId>io.quarkus</groupId>
                         <artifactId>quarkus-maven-plugin</artifactId>
-                        <version>${quarkus.version}</version>
+                        <version>${quarkus-testing.version}</version>
                         <executions>
                             <execution>
                                 <goals>
