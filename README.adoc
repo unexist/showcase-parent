@@ -1,4 +1,4 @@
-= Maven showcase parent
+= Showcase for maven parent based on quarkus
 
 This project holds a bill-of-material (BOM) for my quarkus showcase projects, to ease
 version handling and tool configs.
