@@ -31,7 +31,7 @@
 
         <!-- Quarkus -->
         <quarkus.version>1.13.7.Final</quarkus.version>
-        <quarkus-testing.version>2.0.0.CR2</quarkus-testing.version>
+        <quarkus-testing.version>2.0.0.Final</quarkus-testing.version>
 
         <!-- Logging -->
         <slf4j.version>1.7.30</slf4j.version>
