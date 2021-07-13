@@ -1,7 +1,7 @@
-= Showcase for maven parent based on quarkus
+= Parent for showcases
 
-This project holds a bill-of-material (BOM) for my quarkus showcase projects, to ease
-version handling and tool configs.
+This project holds a bill-of-material (BOM) for my showcase projects, to ease version handling and
+tool configs.
 
 == Instructions
 
@@ -11,7 +11,7 @@ To use it, just copy the following lines to your pom:
 ----
 <parent>
     <groupId>dev.unexist.showcase</groupId>
-    <artifactId>java-parent</artifactId>
+    <artifactId>quarkus-parent</artifactId>
     <version>0.1</version>
 </parent>
 ----
@@ -22,7 +22,7 @@ Also included is a list of different profiles:
 
 - **quarkus** - Latest stable version
 - **quarkus-testing** - Latest QS version
-- **hg** - Enables mercurial properties
+- **hg** - Enables mercurial properties'
 - **git** - Enables git properties
 - **native** - Builds native version
 
