@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>dev.unexist.showcase</groupId>
-        <artifactId>showcase-parent-quarkus</artifactId>
+        <artifactId>showcase-parent</artifactId>
         <version>0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
