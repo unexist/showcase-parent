@@ -30,6 +30,7 @@
 
     <modules>
         <module>build-tools</module>
+        <module>helidon-parent</module>
         <module>quarkus-parent</module>
     </modules>
 </project>
