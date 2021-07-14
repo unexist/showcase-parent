@@ -289,6 +289,7 @@
                         <groupId>io.helidon.build-tools</groupId>
                         <artifactId>helidon-cli-maven-plugin</artifactId>
                         <version>${helidon-cli-plugin.version}</version>
+                        <extensions>true</extensions>
                     </plugin>
                     <plugin>
                         <groupId>io.helidon.build-tools</groupId>
