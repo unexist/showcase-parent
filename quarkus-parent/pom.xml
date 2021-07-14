@@ -30,8 +30,8 @@
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 
         <!-- Quarkus -->
-        <quarkus.version>1.13.7.Final</quarkus.version>
-        <quarkus-testing.version>2.0.1.Final</quarkus-testing.version>
+        <quarkus.version>2.0.2.Final</quarkus.version>
+        <quarkus-testing.version>1.3.7.Final</quarkus-testing.version>
 
         <!-- Logging -->
         <slf4j.version>1.7.30</slf4j.version>
