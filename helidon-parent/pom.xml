@@ -31,7 +31,7 @@
 
         <!-- Helidon -->
         <helidon.version>2.3.2</helidon.version>
-        <helidon-plugin.version>2.2.1</helidon-plugin.version>
+        <helidon-maven-plugin.version>2.2.1</helidon-maven-plugin.version>
         <helidon-cli-plugin.version>2.2.1</helidon-cli-plugin.version>
 
         <!-- Logging -->
@@ -58,6 +58,7 @@
 
         <!-- Workaround to get a proper timestamp -->
         <timestamp>${maven.build.timestamp}</timestamp>
+        <jandex-maven-plugin.version>1.1.0</jandex-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -225,7 +226,7 @@
 
     <profiles>
         <profile>
-            <id>helidon</id>
+            <id>showcase-helidon</id>
             <activation>
                 <property>
                     <name>!testing</name>
@@ -250,19 +251,54 @@
                     <groupId>io.helidon.microprofile.bundles</groupId>
                     <artifactId>helidon-microprofile</artifactId>
                 </dependency>
+                <dependency>
+                    <groupId>org.jboss</groupId>
+                    <artifactId>jandex</artifactId>
+                    <scope>runtime</scope>
+                    <optional>true</optional>
+                </dependency>
+                <dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-api</artifactId>
+                    <scope>test</scope>
+                </dependency>
             </dependencies>
 
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>io.helidon.build-tools</groupId>
-                        <artifactId>helidon-maven-plugin</artifactId>
-                        <version>${helidon-plugin.version}</version>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-libs</id>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jboss.jandex</groupId>
+                        <artifactId>jandex-maven-plugin</artifactId>
+                        <version>${jandex-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>make-index</id>
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>io.helidon.build-tools</groupId>
                         <artifactId>helidon-cli-maven-plugin</artifactId>
                         <version>${helidon-cli-plugin.version}</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.helidon.build-tools</groupId>
+                        <artifactId>helidon-maven-plugin</artifactId>
+                        <version>${helidon-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>third-party-license-report</id>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -335,45 +371,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-
-        <profile>
-            <id>native</id>
-            <activation>
-                <property>
-                    <name>native</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${maven-failsafe-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <systemPropertyVariables>
-                                        <native.image.path>
-                                            ${project.build.directory}/${project.build.finalName}-runner
-                                        </native.image.path>
-                                        <java.util.logging.manager>org.jboss.logmanager.LogManager
-                                        </java.util.logging.manager>
-                                        <maven.home>${maven.home}</maven.home>
-                                    </systemPropertyVariables>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-            <properties>
-                <quarkus.package.type>native</quarkus.package.type>
-            </properties>
         </profile>
     </profiles>
 </project>

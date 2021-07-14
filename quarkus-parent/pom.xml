@@ -224,7 +224,7 @@
 
     <profiles>
         <profile>
-            <id>quarkus</id>
+            <id>showcase-quarkus</id>
             <activation>
                 <property>
                     <name>!testing</name>
@@ -293,7 +293,7 @@
         </profile>
 
         <profile>
-            <id>quarkus-testing</id>
+            <id>showcase-quarkus-testing</id>
             <activation>
                 <property>
                     <name>testing</name>
