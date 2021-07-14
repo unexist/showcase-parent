@@ -34,6 +34,11 @@
         <helidon-maven-plugin.version>2.2.1</helidon-maven-plugin.version>
         <helidon-cli-plugin.version>2.2.1</helidon-cli-plugin.version>
 
+        <mainClass>io.helidon.microprofile.cdi.Main</mainClass>
+
+        <jandex-maven-plugin.version>1.1.0</jandex-maven-plugin.version>
+        <openapi-ui.version>1.1.4</openapi-ui.version>
+
         <!-- Logging -->
         <slf4j.version>1.7.30</slf4j.version>
 
@@ -58,7 +63,7 @@
 
         <!-- Workaround to get a proper timestamp -->
         <timestamp>${maven.build.timestamp}</timestamp>
-        <jandex-maven-plugin.version>1.1.0</jandex-maven-plugin.version>
+        <maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
     </properties>
 
     <dependencies>
@@ -209,6 +214,14 @@
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>application.properties</include>
+                    <include>META-INF/resources/index.html</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources/META-INF/resources</directory>
+                <includes>
+                    <include>index.html</include>
                 </includes>
             </resource>
         </resources>
@@ -247,16 +260,27 @@
             </dependencyManagement>
 
             <dependencies>
+                <!-- Helidon -->
                 <dependency>
                     <groupId>io.helidon.microprofile.bundles</groupId>
                     <artifactId>helidon-microprofile</artifactId>
                 </dependency>
+
                 <dependency>
                     <groupId>org.jboss</groupId>
                     <artifactId>jandex</artifactId>
                     <scope>runtime</scope>
                     <optional>true</optional>
                 </dependency>
+
+                <!-- OpenAPI -->
+                <dependency>
+                    <groupId>org.microprofile-ext.openapi-ext</groupId>
+                    <artifactId>openapi-ui</artifactId>
+                    <version>${openapi-ui.version}</version>
+                </dependency>
+
+                <!-- Testing -->
                 <dependency>
                     <groupId>org.junit.jupiter</groupId>
                     <artifactId>junit-jupiter-api</artifactId>
@@ -269,6 +293,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven-dependency-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>copy-libs</id>
@@ -282,6 +307,9 @@
                         <executions>
                             <execution>
                                 <id>make-index</id>
+                                <goals>
+                                    <goal>jandex</goal>
+                                </goals>
                             </execution>
                         </executions>
                     </plugin>
