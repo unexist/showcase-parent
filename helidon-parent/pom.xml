@@ -39,6 +39,8 @@
         <jandex-maven-plugin.version>1.1.0</jandex-maven-plugin.version>
         <openapi-ui.version>1.1.4</openapi-ui.version>
 
+        <mainClass>io.helidon.microprofile.cdi.Main</mainClass>
+
         <!-- Logging -->
         <slf4j.version>1.7.30</slf4j.version>
         <jboss-logmanager.version>2.3.0.Alpha1</jboss-logmanager.version>
@@ -271,6 +273,13 @@
                     <!-- Helidon -->
                     <dependency>
                         <groupId>io.helidon</groupId>
+                        <artifactId>helidon-bom</artifactId>
+                        <version>${helidon.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.helidon</groupId>
                         <artifactId>helidon-dependencies</artifactId>
                         <version>${helidon.version}</version>
                         <type>pom</type>
@@ -284,6 +293,15 @@
                 <dependency>
                     <groupId>io.helidon.microprofile.bundles</groupId>
                     <artifactId>helidon-microprofile</artifactId>
+                </dependency>
+                <dependency>
+                    <!-- Needed to compile persistence.xml -->
+                    <groupId>io.helidon.microprofile.server</groupId>
+                    <artifactId>helidon-microprofile-server</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.helidon.common</groupId>
+                    <artifactId>helidon-common</artifactId>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss</groupId>
