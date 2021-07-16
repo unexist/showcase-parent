@@ -254,6 +254,10 @@
             <dependencies>
                 <dependency>
                     <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-jsonp</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-resteasy</artifactId>
                 </dependency>
                 <dependency>
