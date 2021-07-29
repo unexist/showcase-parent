@@ -10,7 +10,18 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!-- Project -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Maven -->
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+
+        <!-- Workaround to get a proper timestamp -->
+        <timestamp>${maven.build.timestamp}</timestamp>
     </properties>
 
     <licenses>
@@ -30,6 +41,7 @@
 
     <modules>
         <module>build-tools</module>
+        <module>common-parent</module>
         <module>helidon-parent</module>
         <module>quarkus-parent</module>
     </modules>
