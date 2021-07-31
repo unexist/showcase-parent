@@ -40,6 +40,7 @@
     </developers>
 
     <modules>
+        <module>axon-parent</module>
         <module>build-tools</module>
         <module>common-parent</module>
         <module>helidon-parent</module>

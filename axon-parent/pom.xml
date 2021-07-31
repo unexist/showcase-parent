@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>axon-parent</artifactId>
+    <version>0.1</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>dev.unexist.showcase</groupId>
+        <artifactId>common-parent</artifactId>
+        <version>0.1</version>
+        <relativePath>../common-parent/pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <!-- Axon -->
+        <axon-bom.version>4.5.3</axon-bom.version>
+        <axon-core.version>3.4.3</axon-core.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>showcase-axon</id>
+            <activation>
+                <property>
+                    <name>!testing</name>
+                </property>
+            </activation>
+
+            <dependencyManagement>
+                <dependencies>
+                    <!-- Axon -->
+                    <dependency>
+                        <groupId>org.axonframework</groupId>
+                        <artifactId>axon-bom</artifactId>
+                        <version>${axon-bom.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.axonframework</groupId>
+                    <artifactId>axon-core</artifactId>
+                    <version>${axon-core.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>
