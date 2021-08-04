@@ -21,6 +21,39 @@
         <quarkus-testing.version>2.1.0.CR1</quarkus-testing.version>
     </properties>
 
+    <dependencies>
+        <!-- Quarkus -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jsonp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-jsonb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jacoco</artifactId>
+        </dependency>-->
+    </dependencies>
+
     <profiles>
         <profile>
             <id>showcase-quarkus</id>
@@ -42,38 +75,6 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-
-            <dependencies>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-jsonp</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-resteasy</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-resteasy-jsonb</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-smallrye-openapi</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-hibernate-validator</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-junit5</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <!--<dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-jacoco</artifactId>
-                </dependency>-->
-            </dependencies>
 
             <build>
                 <plugins>
@@ -110,38 +111,6 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-
-            <dependencies>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-jsonp</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-resteasy</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-resteasy-jsonb</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-smallrye-openapi</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-hibernate-validator</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-junit5</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <!--<dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-jacoco</artifactId>
-                </dependency>-->
-            </dependencies>
 
             <build>
                 <plugins>
