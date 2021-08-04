@@ -18,7 +18,7 @@
     <properties>
         <!-- Axon -->
         <axon-bom.version>4.5.3</axon-bom.version>
-        <axon-core.version>3.4.3</axon-core.version>
+        <spring-boot-starter-web.version>2.5.3</spring-boot-starter-web.version>
     </properties>
 
     <profiles>
@@ -44,8 +44,17 @@
             <dependencies>
                 <dependency>
                     <groupId>org.axonframework</groupId>
-                    <artifactId>axon-core</artifactId>
-                    <version>${axon-core.version}</version>
+                    <artifactId>axon-spring-boot-starter</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                    <version>${spring-boot-starter-web.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.axonframework</groupId>
+                    <artifactId>axon-test</artifactId>
+                    <scope>test</scope>
                 </dependency>
             </dependencies>
         </profile>
