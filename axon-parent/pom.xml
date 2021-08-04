@@ -18,7 +18,8 @@
     <properties>
         <!-- Axon -->
         <axon-bom.version>4.5.3</axon-bom.version>
-        <spring-boot-starter-web.version>2.5.3</spring-boot-starter-web.version>
+        <spring-boot.version>2.5.3</spring-boot.version>
+        <springdoc-openapi.version>1.5.10</springdoc-openapi.version>
     </properties>
 
     <profiles>
@@ -38,25 +39,74 @@
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
+
+                    <!-- Spring -->
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-dependencies</artifactId>
+                        <version>${spring-boot.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
                 </dependencies>
             </dependencyManagement>
 
             <dependencies>
+                <!-- Axon -->
                 <dependency>
                     <groupId>org.axonframework</groupId>
                     <artifactId>axon-spring-boot-starter</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                    <version>${spring-boot-starter-web.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.axonframework</groupId>
                     <artifactId>axon-test</artifactId>
                     <scope>test</scope>
                 </dependency>
+
+                <!-- Spring -->
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </dependency>
+
+                <!-- Springdoc -->
+                <dependency>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi</artifactId>
+                    <version>${springdoc-openapi.version}</version>
+                    <type>pom</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-ui</artifactId>
+                    <version>${springdoc-openapi.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-data-rest</artifactId>
+                    <version>${springdoc-openapi.version}</version>
+                </dependency>
             </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <version>${spring-boot.version}</version>
+                        <configuration>
+                            <layout>ZIP</layout>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
