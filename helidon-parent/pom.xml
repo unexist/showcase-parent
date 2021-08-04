@@ -64,9 +64,7 @@
         <profile>
             <id>showcase-helidon</id>
             <activation>
-                <property>
-                    <name>!testing</name>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
 
             <dependencyManagement>

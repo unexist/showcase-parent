@@ -25,9 +25,7 @@
         <profile>
             <id>showcase-axon</id>
             <activation>
-                <property>
-                    <name>!testing</name>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
 
             <dependencyManagement>
