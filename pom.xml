@@ -44,6 +44,7 @@
         <module>build-tools</module>
         <module>common-parent</module>
         <module>helidon-parent</module>
+        <module>micronaut-parent</module>
         <module>quarkus-parent</module>
     </modules>
 </project>
