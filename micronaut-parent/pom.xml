@@ -117,8 +117,8 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <arg>-Amicronaut.processing.group=${groupId}</arg>
-                        <arg>-Amicronaut.processing.module=${artifactId}</arg>
+                        <arg>-Amicronaut.processing.group=${project.groupId}</arg>
+                        <arg>-Amicronaut.processing.module=${project.artifactId}</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
