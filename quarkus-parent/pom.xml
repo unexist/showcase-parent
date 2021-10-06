@@ -164,7 +164,7 @@
         </profile>
 
         <profile>
-            <id>native</id>
+            <id>showcase-quarkus-native</id>
             <activation>
                 <property>
                     <name>native</name>
