@@ -28,7 +28,7 @@
 
         <!-- Util -->
         <apache-commons-lang.version>3.12.0</apache-commons-lang.version>
-        <jackson-modules-java8.version>2.12.5</jackson-modules-java8.version>
+        <jackson-modules-java8.version>2.13.0</jackson-modules-java8.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
 
         <!-- VCS -->
