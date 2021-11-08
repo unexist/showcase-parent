@@ -153,9 +153,15 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
                         <configuration>
-                            <!-- Uncomment to enable incremental compilation -->
-                            <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+                            <fork>true</fork>
+                            <compilerArgs>
+                                <arg>-J-Dmicronaut.openapi.views.spec=swagger-ui.enabled=true</arg>
+                                <arg>-parameters</arg>
+                                <arg>-Amicronaut.processing.group=${project.groupId}</arg>
+                                <arg>-Amicronaut.processing.module=${project.artifactId}</arg>
+                            </compilerArgs>
 
                             <annotationProcessorPaths combine.children="append">
                                 <path>
@@ -168,16 +174,7 @@
                                     <artifactId>micronaut-validation</artifactId>
                                     <version>${micronaut.version}</version>
                                 </path>
-                                <path>
-                                    <groupId>io.micronaut</groupId>
-                                    <artifactId>micronaut-http-validation</artifactId>
-                                    <version>${micronaut.version}</version>
-                                </path>
                             </annotationProcessorPaths>
-                            <compilerArgs>
-                                <arg>-Amicronaut.processing.group=${project.groupId}</arg>
-                                <arg>-Amicronaut.processing.module=${project.artifactId}</arg>
-                            </compilerArgs>
                         </configuration>
                     </plugin>
                 </plugins>
