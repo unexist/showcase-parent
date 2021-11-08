@@ -20,7 +20,6 @@
         <micronaut.version>3.0.3</micronaut.version>
         <micronaut-maven-plugin.version>3.0.2</micronaut-maven-plugin.version>
         <micronaut-hibernate-validator.version>3.0.0</micronaut-hibernate-validator.version>
-        <micronaut-openapi.version>3.2.0</micronaut-openapi.version>
         <micronaut.runtime>netty</micronaut.runtime>
 
         <!-- Maven -->
@@ -173,11 +172,6 @@
                                     <groupId>io.micronaut</groupId>
                                     <artifactId>micronaut-http-validation</artifactId>
                                     <version>${micronaut.version}</version>
-                                </path>
-                                <path>
-                                    <groupId>io.micronaut.openapi</groupId>
-                                    <artifactId>micronaut-openapi</artifactId>
-                                    <version>${micronaut-openapi.version}</version>
                                 </path>
                             </annotationProcessorPaths>
                             <compilerArgs>
