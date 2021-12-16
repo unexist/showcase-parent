@@ -17,7 +17,7 @@
 
     <properties>
         <!-- Axon -->
-        <axon-bom.version>4.5.3</axon-bom.version>
+        <axon-bom.version>4.5.8</axon-bom.version>
         <spring-boot.version>2.5.3</spring-boot.version>
         <springdoc-openapi.version>1.5.10</springdoc-openapi.version>
     </properties>
