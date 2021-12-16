@@ -17,8 +17,8 @@
 
     <properties>
         <!-- Micronaut -->
-        <micronaut.version>3.0.3</micronaut.version>
-        <micronaut-maven-plugin.version>3.0.2</micronaut-maven-plugin.version>
+        <micronaut.version>3.2.3</micronaut.version>
+        <micronaut-maven-plugin.version>3.1.0</micronaut-maven-plugin.version>
         <micronaut-hibernate-validator.version>3.0.0</micronaut-hibernate-validator.version>
         <micronaut.runtime>netty</micronaut.runtime>
 
