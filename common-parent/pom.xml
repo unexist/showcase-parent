@@ -207,7 +207,7 @@
 
     <profiles>
         <profile>
-            <id>echopraxia</id>
+            <id>log-echopraxia</id>
             <activation>
                 <property>
                     <name>echopraxia</name>
@@ -223,7 +223,7 @@
         </profile>
 
         <profile>
-            <id>sl4j</id>
+            <id>log-sl4j</id>
             <activation>
                 <property>
                     <name>!echopraxia</name>
