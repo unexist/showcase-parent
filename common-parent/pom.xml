@@ -25,6 +25,7 @@
 
         <!-- Logging -->
         <slf4j.version>1.7.32</slf4j.version>
+        <echopraxia.version>1.0.0</echopraxia.version>
 
         <!-- Util -->
         <apache-commons-lang.version>3.12.0</apache-commons-lang.version>
@@ -47,18 +48,6 @@
     </properties>
 
     <dependencies>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
         <!-- Util -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -217,6 +206,44 @@
     </reporting>
 
     <profiles>
+        <profile>
+            <id>echopraxia</id>
+            <activation>
+                <property>
+                    <name>echopraxia</name>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.tersesystems.echopraxia</groupId>
+                    <artifactId>logstash</artifactId>
+                    <version>${echopraxia.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>sl4j</id>
+            <activation>
+                <property>
+                    <name>!echopraxia</name>
+                </property>
+            </activation>
+            <dependencies>
+                <!-- Logging -->
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                    <version>${slf4j.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-jdk14</artifactId>
+                    <version>${slf4j.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
         <profile>
             <id>vcs-hg</id>
             <activation>
