@@ -15,9 +15,8 @@
         <relativePath>../common-parent/pom.xml</relativePath>
     </parent>
 
-    <properties>
+    <properties quarkus.version="2.10.3.Final">
         <!-- Quarkus -->
-        <quarkus.version>2.10.2.Final</quarkus.version>
         <quarkus-testing.version>2.6.1.Final</quarkus-testing.version>
     </properties>
 
