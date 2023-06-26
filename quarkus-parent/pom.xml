@@ -18,7 +18,7 @@
     <properties>
         <!-- Quarkus -->
         <quarkus.version>2.16.7.Final</quarkus.version>
-        <quarkus-testing.version>3.1.0.Final</quarkus-testing.version>
+        <quarkus-testing.version>3.1.2.Final</quarkus-testing.version>
     </properties>
 
     <profiles>
