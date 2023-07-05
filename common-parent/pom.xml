@@ -30,8 +30,8 @@
 
         <!-- Util -->
         <apache-commons-lang.version>3.12.0</apache-commons-lang.version>
-        <jackson-modules-java8.version>2.13.4</jackson-modules-java8.version>
-        <jackson-datatype-jdk8.version>2.13.4</jackson-datatype-jdk8.version>
+        <jackson-modules-java8.version>2.14.2</jackson-modules-java8.version>
+        <jackson-datatype-jdk8.version>2.14.2</jackson-datatype-jdk8.version>
 
         <!-- VCS -->
         <hg-revision-plugin.version>0.12</hg-revision-plugin.version>
@@ -39,13 +39,13 @@
 
         <!-- Audit -->
         <checkstyle-plugin.version>3.2.0</checkstyle-plugin.version>
-        <spotbugs-maven-plugin.version>4.6.0.0</spotbugs-maven-plugin.version>
-        <spotbugs-plugin.version>4.7.0</spotbugs-plugin.version>
+        <spotbugs-maven-plugin.version>4.7.3.5</spotbugs-maven-plugin.version>
+        <spotbugs-plugin.version>4.7.3</spotbugs-plugin.version>
 
         <!-- Testing -->
         <hamcrest.version>2.2</hamcrest.version>
-        <rest-assured.version>5.2.0</rest-assured.version>
-        <assertj-core.version>3.23.1</assertj-core.version>
+        <rest-assured.version>5.3.0</rest-assured.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
     </properties>
 
     <dependencies>
