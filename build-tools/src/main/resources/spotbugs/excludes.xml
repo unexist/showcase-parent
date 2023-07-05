@@ -4,11 +4,12 @@
         <Class name="~.*\.generated\..*"/>
     </Match>
     <Match>
-        <Class name="dev.unexist.showcase.todo.domain.todo.TodoBase"/>
         <Bug pattern="EI_EXPOSE_REP"/>
     </Match>
     <Match>
-        <Class name="dev.unexist.showcase.todo.domain.todo.TodoBase"/>
         <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP"/>
     </Match>
 </FindBugsFilter>
