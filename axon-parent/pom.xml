@@ -18,6 +18,8 @@
     <properties>
         <!-- Axon -->
         <axon-bom.version>4.6.0</axon-bom.version>
+
+        <!-- Spring -->
         <spring-boot.version>2.7.3</spring-boot.version>
         <springdoc-openapi.version>2.1.0</springdoc-openapi.version>
         <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
