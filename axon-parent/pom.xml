@@ -17,9 +17,11 @@
 
     <properties>
         <!-- Axon -->
-        <axon-bom.version>4.5.8</axon-bom.version>
-        <spring-boot.version>2.5.3</spring-boot.version>
-        <springdoc-openapi.version>1.5.10</springdoc-openapi.version>
+        <axon-bom.version>4.6.0</axon-bom.version>
+        <spring-boot.version>2.7.3</spring-boot.version>
+        <springdoc-openapi.version>2.1.0</springdoc-openapi.version>
+        <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+        <springdoc-openapi-data-rest.version>1.7.0</springdoc-openapi-data-rest.version>
     </properties>
 
     <profiles>
@@ -84,12 +86,12 @@
                 <dependency>
                     <groupId>org.springdoc</groupId>
                     <artifactId>springdoc-openapi-ui</artifactId>
-                    <version>${springdoc-openapi.version}</version>
+                    <version>${springdoc-openapi-ui.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.springdoc</groupId>
                     <artifactId>springdoc-openapi-data-rest</artifactId>
-                    <version>${springdoc-openapi.version}</version>
+                    <version>${springdoc-openapi-data-rest.version}</version>
                 </dependency>
             </dependencies>
 
