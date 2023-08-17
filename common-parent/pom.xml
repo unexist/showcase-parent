@@ -25,11 +25,11 @@
         <maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
 
         <!-- Logging -->
-        <slf4j.version>1.7.36</slf4j.version>
-        <echopraxia.version>2.2.0</echopraxia.version>
+        <slf4j.version>2.0.7</slf4j.version>
+        <echopraxia.version>3.1.0</echopraxia.version>
 
         <!-- Util -->
-        <apache-commons-lang.version>3.12.0</apache-commons-lang.version>
+        <apache-commons-lang.version>3.13.0</apache-commons-lang.version>
         <jackson-modules-java8.version>2.14.2</jackson-modules-java8.version>
         <jackson-datatype-jdk8.version>2.14.2</jackson-datatype-jdk8.version>
 
