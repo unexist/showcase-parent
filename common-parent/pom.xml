@@ -128,7 +128,6 @@
                     <configLocation>checkstyle/config.xml</configLocation>
                     <suppressionsLocation>checkstyle/suppressions.xml</suppressionsLocation>
                     <headerLocation>checkstyle/java.header</headerLocation>
-                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <includeTestSourceDirectory>false</includeTestSourceDirectory>
                     <linkXRef>false</linkXRef>
