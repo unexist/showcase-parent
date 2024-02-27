@@ -6,7 +6,7 @@
 <module name="Checker">
 
     <metadata
-            name="com.vanderlande"
+            name="dev.unexist"
             value="Checkstyle"/>
 
     <property
@@ -45,6 +45,9 @@
         <property
                 name="max"
                 value="140"/>
+        <property
+                name="fileExtensions"
+                value="java"/>
     </module>
 
     <module name="RegexpSingleline">
@@ -257,7 +260,10 @@
         <module name="MagicNumber">
             <property
                     name="ignoreNumbers"
-                    value="-1, 0, 1, 2"/>
+                    value="-1, 0, 1, 2, 10"/>
+            <property
+                    name="ignoreAnnotation"
+                    value="true"/>
         </module>
         <module name="MemberName">
             <!-- This rule has been changed. Numbers shouldn't be allowed like this: ^[a-z]+([A-Z][a-z]+)*$ -->
