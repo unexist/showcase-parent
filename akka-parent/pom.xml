@@ -16,9 +16,12 @@
     </parent>
 
     <properties>
-        <akka.version>2.9.0</akka.version>
-        <logback-classic.version>1.2.13</logback-classic.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+
+        <scala-binary.version>2.13</scala-binary.version>
+        <akka-dependencies.version>23.10.0</akka-dependencies.version>
+        <akka.version>2.9.0</akka.version>
+        <logback-classic.version>1.5.3</logback-classic.version>
     </properties>
 
     <repositories>
@@ -29,16 +32,36 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>akka-repository</id>
+            <name>Akka library repository</name>
+            <url>https://repo.akka.io/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+          <dependencies>
+              <dependency>
+                  <groupId>com.lightbend.akka</groupId>
+                  <artifactId>akka-dependencies_${scala-binary.version}</artifactId>
+                  <version>${akka-dependencies.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+
     <dependencies>
         <!-- Akka -->
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor-typed_2.13</artifactId>
+            <artifactId>akka-actor-typed_${scala-binary.version}</artifactId>
             <version>${akka.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor-testkit-typed_2.13</artifactId>
+            <artifactId>akka-actor-testkit-typed_${scala-binary.version}</artifactId>
             <version>${akka.version}</version>
             <scope>test</scope>
         </dependency>
@@ -71,7 +94,7 @@
                     <arguments>
                         <argument>-classpath</argument>
                         <classpath />
-                        <argument>dev.unexist.showcase.TodoQuickstart</argument>
+                        <argument>dev.unexist.showcase.Main</argument>
                     </arguments>
                 </configuration>
             </plugin>
